@@ -1,36 +1,60 @@
+import { useState } from "react";
 import style from "../header/header.module.css";
 import LogoMenu from "../../assets/img/logo-menu.svg";
+import IconBars from "../../assets/img/menu-togle.svg";
+import IconClose from "../../assets/img/menu-closer.svg";
 
 const Header = () => {
-    return (
-        <header className={style.header}>
-            <div className={style.headerWrapper}>
-                <a className={style.logo} href="/">
-                    <buttom>
-                        <img src={LogoMenu} alt="logo sevencode" />
-                    </buttom>
+  const [menuActive, setMenuActive] = useState(false);
+  const links = [
+    { name: "Inicio", link: "#carrosell-home" },
+    { name: "sobre", link: "#novos-projetos" },
+    { name: "linguagem", link: "/" },
+    { name: "Documentação", link: "/" },
+  ];
+  const toggleMenu = () => {
+    setMenuActive(!menuActive);
+  };
+
+  return (
+    <header className={`${style.Header} ${menuActive ? style.active : ""}`}>
+      <div className={style.headerWrapper}>
+        <div>
+          <a className={style.LogoA} href="/">
+            <img src={LogoMenu} alt="logo sevencode" />
+          </a>
+        </div>
+        <button id={style.buttonMobile} onClick={toggleMenu}>
+          <img
+            src={menuActive ? IconClose : IconBars}
+            id={style.menuIcons}
+            alt="icon Menu"
+          />
+        </button>
+        <nav className={style.navMenu}>
+          <ul className={style.ulWrapper}>
+            {links.map((link, index) => (
+              <li className={style.navLi} key={link.name}>
+                <a href={link.link} className={style.linksMenuLi} key={index}>
+                  {link.name}
                 </a>
-                <nav className={style.navWrapper}>
-                    <ul>
-                        <li>Inicio</li>
-                        <li>Sobre</li>
-                        <li>Linguagem</li>
-                        <li>Documentação</li>
-                        <li className={style.navLiButton}>
-                            <a className={style.loginbutton} href="">
-                                Login
-                            </a>
-                        </li>
-                        <li className={style.navLiButton}>
-                            <a className={style.registerbutton} href="">
-                                Registro
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-    )
-}
+              </li>
+            ))}
+            <li className={style.navLiButton}>
+              <a className={style.loginButton} href="#">
+                login
+              </a>
+            </li>
+            <li className={style.navLiButton}>
+              <a className={style.registerButton} href="#">
+                Registo
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
+};
 
 export default Header;

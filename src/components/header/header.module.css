@@ -1,23 +1,136 @@
-.header{
-    position: fixed;
-    width: 100%;
-    border-bottom: 2px solid #404040;
+.Header {
+    z-index: 3;
+    background-color: #000000;
 }
-.headerWrapper{
-    max-width: var(--tamanh-maximo);
+
+.headerWrapper {
+    max-width: var(--tamanho-maximo);
     margin: 0 auto;
-    padding: 16px 50px;
+    padding: 16px 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.navWrapper ul{
+.ulWrapper {
     display: flex;
-    gap:32px;
-    color:aliceblue;
+    gap: 24px;
 }
 
-.navLiButton{
+.navLi .linksMenuLi {
+    padding: 0.5rem;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-white);
+    position: relative;
+}
 
+.navLi .linksMenuLi::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--color-purple);
+    border-radius: 5px;
+    transform: scalex(0);
+    transition: all 0.6s ease;
+}
+
+.navLi .linksMenuLi:hover::before{
+    transform: scalex(0.8);
+}
+
+.ulWrapper .navLi .linksMenuLi:hover {
+    color: var(--color-purple);
+}
+
+.navMenu .ulWrapper .navLi{
+    position: relative;
+}
+
+.ulWrapper .loginButton {
+    background-color: var(--color-red);
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-white);
+    border-radius: 10px;
+    border: 1px solid var(--color-white);
+}
+
+.ulWrapper .loginButton:hover {
+    color: var(--color-black);
+    background: var(--color-white);
+    border: 1px solid var(--color-white)
+}
+
+.ulWrapper .registerButton {
+    background-color: var(--color-purple);
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-white);
+    border-radius: 10px;
+    border: 1px solid var(--color-purple);
+}
+
+.ulwrapper .registerButton:hover {
+    color: var(--color-purple);
+    background: var(--color-white);
+    border: 1px solid var(--color-white)
+}
+#buttonMobile {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    /* Menu mobile */
+    .headerWrapper {
+        max-width: 450px;
+    }
+
+    .navMenu {
+        display: none;
+    }
+
+    #menuIcons {
+        width: 20px;
+        height: 20px;
+    }
+
+    #buttonMobile {
+        display: block;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        cursor: pointer;
+        height: 28px;
+        width: 28px;
+    }
+
+    .active .navMenu {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        top: 60px;
+        width: 100%;
+        background-color: #000000;
+        z-index: 1;
+    }
+
+    .ulWrapper .navLi {
+        padding: 1rem;
+    }
+    .active .ulWrapper {
+        text-align: center;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 1rem;  
+    }
+    /* Menu mobile */
 }
