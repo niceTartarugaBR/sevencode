@@ -1,0 +1,29 @@
+.Hero{
+    margin-top: 64px;
+}
+.heroWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--tamanho-maximo);
+    margin: 0 auto;
+}
+
+.heroContent h2{
+    font-size: 3.125rem;
+    font-weight: 500;
+    max-width: 18ch;
+    color: #fff;
+}
+
+.heroContent p{
+    font-size: 1.25rem;
+    font-weight: 500;
+    max-width: 50ch;
+    color: #fff;
+    padding-bottom: 2rem;
+}
+.containerBtn{
+    display: flex;
+    gap: 12px;
+}
